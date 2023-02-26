@@ -1,14 +1,14 @@
 <template>
 <v-container fluid>
-  <v-row dense>
-    <v-col
+  <v-list
+      lines="three"
+  >
+    <single-record
       v-for="record in allRecords"
       :key="record.id"
-      cols="12"
-    >
-      <single-record :record="record" />
-    </v-col>
-  </v-row>
+      :record="record"
+    />
+  </v-list>
 </v-container>
 </template>
 

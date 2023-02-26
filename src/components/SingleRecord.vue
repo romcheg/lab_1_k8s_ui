@@ -1,11 +1,9 @@
 <template>
-<v-card
-  :title="record.first_name"
->
-  <v-card-text>
-    <strong>9379992</strong>
-  </v-card-text>
-</v-card>
+  <v-list-item
+    :title="record.first_name"
+    :subtitle="record.phone_number"
+    :value="record.id"
+  />
 </template>
 
 <script lang="ts">
