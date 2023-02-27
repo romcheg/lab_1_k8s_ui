@@ -1,5 +1,6 @@
 <template>
 <v-container fluid>
+  <v-card>
   <v-list
       lines="three"
   >
@@ -9,26 +10,29 @@
       :record="record"
     />
   </v-list>
+</v-card>
 </v-container>
 </template>
 
 <script lang="ts">
 import {Record} from '@/store/types'
+import { useAppStore } from '@/store/app';
 import SingleRecord from '@/components/SingleRecord.vue';
+import { mapState, mapStores } from 'pinia';
 
 
 export default {
-  data() {
-    return {
-      allRecords: [
-        new Record("dead-beef-caffee", "John", "9379992"),
-        new Record("caffee-dead-beef-", "Jane", "22332222"),
-      ]
-    };
-  },
-
   components: {
     SingleRecord,
-  }
+  },
+
+  computed: {
+    ...mapStores(useAppStore),
+    ...mapState(useAppStore, ['allRecords',]),
+  },
+
+  mounted() {
+    this.appStore.refreshRecords();
+  },
 };
 </script>
